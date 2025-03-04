@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>PathFinder</title>
+  <style>
+    canvas {
+      border: 1px solid black;
+    }
+    #output {
+      margin-top: 10px;
+    }
+    dialog {
+      padding: 20px;
+      border: none;
+      border-radius: 8px;
+      background-color: #f0f0f0;
+      font-size: 20px;
+    }
+    button {
+      padding: 10px 20px;
+      font-size: 16px;
+    }
+    .victory {
+      background-color: #4caf50;
+      color: white;
+    }
+    .defeat {
+      background-color: #f44336;
+      color: white;
+    }
+  </style>
+</head>
+<body>
+  <h1>Labyrinth Pathfinding</h1>
+  <div>
+    <label for="rows">Rows: </label>
+    <input type="number" id="rows" value="5">
+  </div>
+  <div>
+    <label for="cols">Columns: </label>
+    <input type="number" id="cols" value="5">
+  </div>
+  <div>
+    <textarea id="labyrinthInput" rows="10" cols="50">
+#####
+1___#
+###_#
+#___#
+#F###
+    </textarea>
+  </div>
+  <button onclick="startSearch()">Начать поиск</button>
+  <button onclick="clearCanvas()">Очистить поле</button>
+  <div id="output"></div>
+  <canvas id="canvas" width="600" height="600"></canvas>
+
+  <dialog id="resultDialog">
+    <p id="resultMessage"></p>
+    <button onclick="closeDialog()">Закрыть</button>
+  </dialog>
+  <script src="./index.js"></script>
+  <script src="./dist/bundle.js"></script>
+
+</body>
+</html>
