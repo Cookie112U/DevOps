@@ -1,4 +1,4 @@
-import { sendTelegramNotification } from './sendNotification';
+import { sendTelegramNotification } from './sendNotification.js';
 
 const directions = [[-1, 0], [1, 0], [0, -1], [0, 1]];
 
@@ -179,8 +179,11 @@ const fetchData = async () => {
     console.log(data);
   } catch (error) {
     console.error('Ошибка загрузки данных:', error);
-    sendTelegramNotification('Ошибка загрузки данных в приложении!'); // Отправка уведомления
+    sendTelegramNotification('Ошибка загрузки данных в приложении!'); 
   }
 };
 
 fetchData();
+
+
+sendTelegramNotification("🚀 Проект успешно собран и запущен!");

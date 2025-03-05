@@ -1,0 +1,14 @@
+project: my-project
+
+configVersion: 1
+
+---
+image: app
+dockerfile: Dockerfile
+
+---
+image: web
+from: nginx
+shell:
+  beforeInstall:
+    - apt-get update && apt-get install -y curl

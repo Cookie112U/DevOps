@@ -7,6 +7,24 @@ on:
   pull_request:
     branches:
       - main
+  workflow_dispatch:
+    inputs:
+      build_type:
+        description: 'Тип сборки (dev/prod)'
+        required: true
+        default: 'prod'
+        type: choice
+        options:
+          - dev
+          - prod
+      deploy:
+        description: 'Деплой (yes/no)'
+        required: true
+        default: 'no'
+        type: choice
+        options:
+          - yes
+          - no
 
 jobs:
   test:
@@ -45,4 +63,14 @@ jobs:
         run: npm install
 
       - name: Build project
-        run: npm run build
+        run: npm run build --if-present
+        env:
+          BUILD_TYPE: ${{ github.event.inputs.build_type }}
+
+  deploy:
+    needs: build
+    if: github.event.inputs.deploy == 'yes'
+    runs-on: ubuntu-latest
+    steps:
+      - name: Deploy to server
+        run: echo "Deploying to production..."
