@@ -13,3 +13,10 @@ build/
 
 .DS_Store  # Для macOS
 Thumbs.db   # Для Windows
+__pycache__/
+*.pyc
+*.pyo
+*.db
+*.sqlite3
+env/
+*.env

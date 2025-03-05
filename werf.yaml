@@ -12,5 +12,17 @@ from: nginx
 shell:
   beforeInstall:
     - apt-get update && apt-get install -y curl
+  afterInstall:
+    - curl -sL https://deb.nodesource.com/setup_16.x | bash -
+    - apt-get install -y nodejs
+    - npm install
+    - npm run build
 
----
+deploy:
+  strategy: deploy
+  secretManagement: true
+  environments:
+    - prod
+  service:
+    app: "app-service"
+    web: "web-service"
