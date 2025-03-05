@@ -4,8 +4,8 @@
   "main": "index.js",
   "scripts": {
     "test": "jest --coverage",
-    "start": "webpack serve --open",
-    "build": "webpack",
+    "start": "webpack serve --env development",
+    "build": "webpack --env production",
     "docs": "jsdoc -c jsdoc.conf.json"
   },
   "keywords": [],
